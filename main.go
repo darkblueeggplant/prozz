@@ -8,14 +8,11 @@ import (
 )
 
 func main() {
-	// Настройка маршрутов
 	http.HandleFunc("/", homeHandler)
 
-	// Обслуживание статических файлов
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	// Запуск сервера
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"

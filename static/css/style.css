@@ -1,96 +1,249 @@
-body {
-    font-family: 'Arial', sans-serif;
+* {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e2d1f9, #c9b6e4, #a78fcf);
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f0e6ff, #e2d1f9, #d4c2f0);
     color: #4a2d7f;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    max-width: 600px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
 }
 
-header {
-    margin-bottom: 2rem;
+.content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #5a3d8f;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #6a4d9f;
 }
 
-button {
-    background-color: #7e57c2;
+/* Стили для кнопки "Связаться с нами" */
+.contact-toggle {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #7e57c2, #5e35b1);
     color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 1.1rem;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(94, 53, 177, 0.4);
+}
+
+.contact-toggle:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 20px rgba(94, 53, 177, 0.6);
+}
+
+.contact-toggle i {
+    font-size: 2rem;
+}
+
+/* Стили для выпадающего блока контактов */
+.contact-panel {
+    position: fixed;
+    right: -400px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px 0 0 20px;
+    box-shadow: -5px 5px 25px rgba(0,0,0,0.15);
+    z-index: 999;
+    transition: right 0.5s ease;
+    overflow: hidden;
+    border: 1px solid rgba(126, 87, 194, 0.2);
+}
+
+.contact-panel.active {
+    right: 0;
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #7e57c2, #5e35b1);
+    color: white;
+}
+
+.contact-header h2 {
+    font-size: 1.8rem;
+}
+
+.close-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #9575cd;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
 }
 
-.time-display {
-    margin-top: 2rem;
-    min-height: 120px;
+.contact-content {
+    padding: 20px;
 }
 
-.time-box {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.time-hours, .time-minutes, .time-seconds {
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #4a2d7f;
-    display: inline-block;
-    min-width: 80px;
+.contact-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.time-separator {
-    font-size: 3rem;
-    color: #4a2d7f;
-    margin: 0 5px;
-    position: relative;
-    top: -5px;
+.contact-item i {
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
 }
 
-footer {
-    margin-top: 3rem;
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: #4a2d7f;
+.contact-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
 }
 
-@media (max-width: 600px) {
-    .time-hours, .time-minutes, .time-seconds {
-        font-size: 2.5rem;
-        min-width: 60px;
+.contact-info p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Специфичные стили для каждого способа связи */
+.whatsapp {
+    background-color: rgba(37, 211, 102, 0.1);
+    border-left: 4px solid #25d366;
+}
+
+.whatsapp i {
+    background-color: #25d366;
+    color: white;
+}
+
+.telegram {
+    background-color: rgba(0, 136, 204, 0.1);
+    border-left: 4px solid #0088cc;
+}
+
+.telegram i {
+    background-color: #0088cc;
+    color: white;
+}
+
+.phone {
+    background-color: rgba(59, 201, 53, 0.1);
+    border-left: 4px solid #3bc935;
+}
+
+.phone i {
+    background-color: #3bc935;
+    color: white;
+}
+
+.email {
+    background-color: rgba(219, 68, 55, 0.1);
+    border-left: 4px solid #db4437;
+}
+
+.email i {
+    background-color: #db4437;
+    color: white;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .contact-panel {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        top: auto;
+        bottom: -100vh;
+        right: 0;
+        transform: none;
+        border-radius: 20px 20px 0 0;
     }
     
-    .time-separator {
-        font-size: 2rem;
-        top: -3px;
+    .contact-panel.active {
+        bottom: 0;
+        right: 0;
     }
     
-    .time-box {
-        padding: 1rem 1.5rem;
+    .contact-toggle {
+        right: 20px;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .content {
+        padding: 25px 20px;
+    }
+    
+    .content h1 {
+        font-size: 2.2rem;
     }
 }

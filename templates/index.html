@@ -3,23 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Время сейчас</title>
+    <title>Связаться с нами</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Текущее время</h1>
-        </header>
+        <div class="content">
+            <h1>Наши контакты</h1>
+            <p>Мы всегда рады помочь вам! Нажмите на иконку справа, чтобы увидеть все способы связи.</p>
+        </div>
         
-        <main>
-            <button id="showTimeBtn">Показать время</button>
-            <div id="timeDisplay" class="time-display"></div>
-        </main>
+        <!-- Кнопка для открытия контактов -->
+        <div class="contact-toggle" id="contactToggle">
+            <i class="fas fa-comments"></i>
+        </div>
         
-        <footer>
-            <p>&copy; Время здесь и сейчас</p>
-        </footer>
+        <!-- Блок контактов -->
+        <div class="contact-panel" id="contactPanel">
+            <div class="contact-header">
+                <h2>Связаться с нами</h2>
+                <div class="close-btn" id="closeContact">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-item whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="contact-info">
+                        <h3>WhatsApp</h3>
+                        <p>+7 (900) 123-45-67</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item telegram">
+                    <i class="fab fa-telegram"></i>
+                    <div class="contact-info">
+                        <h3>Telegram</h3>
+                        <p>@our_company</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item phone">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info">
+                        <h3>Телефон</h3>
+                        <p>+7 (495) 765-43-21</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item email">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p>contact@company.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="/static/js/script.js"></script>
