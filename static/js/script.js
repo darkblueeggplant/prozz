@@ -1,66 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const createTableBtn = document.getElementById('createTableBtn');
-    const tableContainer = document.getElementById('tableContainer');
+    const showTimeBtn = document.getElementById('showTimeBtn');
+    const timeDisplay = document.getElementById('timeDisplay');
     
-    createTableBtn.addEventListener('click', function() {
-        // Создаем таблицу
-        const table = document.createElement('table');
-        table.className = 'dynamic-table';
-        table.setAttribute('border', '1');
+    showTimeBtn.addEventListener('click', function() {
+        // Получаем текущее время
+        const now = new Date();
         
-        // Создаем заголовок таблицы
-        const thead = document.createElement('thead');
-        const headerRow = document.createElement('tr');
+        // Форматируем время
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
         
-        ['Заголовок 1', 'Заголовок 2', 'Заголовок 3'].forEach(headerText => {
-            const th = document.createElement('th');
-            th.textContent = headerText;
-            headerRow.appendChild(th);
-        });
+        // Создаем красивый вывод
+        const timeString = `
+            <div class="time-box">
+                <span class="time-hours">${hours}</span>
+                <span class="time-separator">:</span>
+                <span class="time-minutes">${minutes}</span>
+                <span class="time-separator">:</span>
+                <span class="time-seconds">${seconds}</span>
+            </div>
+        `;
         
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
+        // Отображаем время
+        timeDisplay.innerHTML = timeString;
         
-        // Создаем тело таблицы
-        const tbody = document.createElement('tbody');
-        
-        // Добавляем 2 пустые строки
-        for (let i = 0; i < 2; i++) {
-            const row = document.createElement('tr');
+        // Обновляем время каждую секунду
+        const intervalId = setInterval(() => {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
             
-            for (let j = 0; j < 3; j++) {
-                const td = document.createElement('td');
-                td.textContent = ''; // Пустая ячейка
-                row.appendChild(td);
-            }
-            
-            tbody.appendChild(row);
-        }
+            document.querySelector('.time-hours').textContent = hours;
+            document.querySelector('.time-minutes').textContent = minutes;
+            document.querySelector('.time-seconds').textContent = seconds;
+        }, 1000);
         
-        table.appendChild(tbody);
-        
-        // Очищаем контейнер и добавляем таблицу
-        tableContainer.innerHTML = '';
-        tableContainer.appendChild(table);
-        
-        // Добавляем кнопку для добавления строк
-        const addRowBtn = document.createElement('button');
-        addRowBtn.textContent = 'Добавить строку';
-        addRowBtn.id = 'addRowBtn';
-        addRowBtn.style.marginTop = '10px';
-        tableContainer.appendChild(addRowBtn);
-        
-        // Обработчик для добавления строк
-        addRowBtn.addEventListener('click', function() {
-            const newRow = document.createElement('tr');
-            
-            for (let j = 0; j < 3; j++) {
-                const td = document.createElement('td');
-                td.textContent = ''; // Пустая ячейка
-                newRow.appendChild(td);
-            }
-            
-            tbody.appendChild(newRow);
-        });
+        // Останавливаем обновление при новом нажатии
+        showTimeBtn.onclick = function() {
+            clearInterval(intervalId);
+            timeDisplay.innerHTML = '';
+            showTimeBtn.onclick = arguments.callee;
+        };
     });
 });

@@ -1,42 +1,96 @@
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e2d1f9, #c9b6e4, #a78fcf);
+    color: #4a2d7f;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 header {
-    background: #35424a;
-    color: #ffffff;
-    padding: 1rem 0;
+    margin-bottom: 2rem;
 }
 
-nav ul {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
+header h1 {
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
 }
 
-nav ul li {
-    margin: 0 1rem;
+button {
+    background-color: #7e57c2;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
+button:hover {
+    background-color: #9575cd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.time-display {
+    margin-top: 2rem;
+    min-height: 120px;
+}
+
+.time-box {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.time-hours, .time-minutes, .time-seconds {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #4a2d7f;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.time-separator {
+    font-size: 3rem;
+    color: #4a2d7f;
+    margin: 0 5px;
+    position: relative;
+    top: -5px;
 }
 
 footer {
-    text-align: center;
+    margin-top: 3rem;
     padding: 1rem;
-    background: #35424a;
-    color: #ffffff;
+    font-size: 0.9rem;
+    color: #4a2d7f;
+}
+
+@media (max-width: 600px) {
+    .time-hours, .time-minutes, .time-seconds {
+        font-size: 2.5rem;
+        min-width: 60px;
+    }
+    
+    .time-separator {
+        font-size: 2rem;
+        top: -3px;
+    }
+    
+    .time-box {
+        padding: 1rem 1.5rem;
+    }
 }

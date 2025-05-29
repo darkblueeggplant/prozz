@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+    <title>Время сейчас</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Главная</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <h1>Главная страница</h1>
-        <p>Добро пожаловать на наш сайт!</p>
+    <div class="container">
+        <header>
+            <h1>Текущее время</h1>
+        </header>
         
-        <button id="createTableBtn">Создать таблицу</button>
-        <div id="tableContainer"></div>
-    </main>
-    
-    <footer>
-        <p>&copy; Мой статичный сайт</p>
-    </footer>
+        <main>
+            <button id="showTimeBtn">Показать время</button>
+            <div id="timeDisplay" class="time-display"></div>
+        </main>
+        
+        <footer>
+            <p>&copy; Время здесь и сейчас</p>
+        </footer>
+    </div>
     
     <script src="/static/js/script.js"></script>
 </body>
